@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Track Info</title>
+<style>
+table {
+	border-style: inset;
+	font-size: 130%;
+	font-family:verdana;
+	text-align: justify;
+	width: 40%;
+	margin: auto;
+}
+h1 {
+	text-align: center
+}
+th, td {
+	text-align: center;
+	padding: 3px;
+	border-bottom: 4px solid black;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: grey;
+	height: 40px;
+	overflow: hidden;
+}
+li a:hover {
+	background-color: red;
+}
+li a {
+	display: inline-block;
+	padding: 14px 16px ; 
+	text-decoration: none;
+	color: white;
+	float: left;
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+	<ul>
+		<li sec:authorize="isAuthenticated()"><a th:href="@{/addtrack}">Add New Track</a></li>
+		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}" class="btn btn-primary">Add Car</a></li>
+		<li>	
+			<div>
+				<div sec:authorize="isAnonymous()">
+						<a th:href="@{/login}">Sign in</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<form method="post">
+						<a th:href="@{/logout}"  type="submit">Sign out</a>					
+					</form>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<H1>Track list</H1>
+	<div>
+		<table id="infotable">
+			<tr>
+				<th>Track name</th>
+				<th>Track Type</th>
+				<th>Scenario</th>
+			</tr>
+			<tr th:each="track: ${tracks}">
+				<td th:text="${track.trackName}"></td>
+				<td th:text="${track.trackType}"></td>
+				<td th:text="${track.Scenario}"></td>
+				<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}">Car List</a></td>
+			</tr>
+		</table>
+	</div>
+	<!--  <a th:href="@{/addtrack}" class="btn btn-primary">Add new Track</a>
+	-->
+
+</body>
+</html>

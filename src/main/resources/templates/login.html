@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Login</title>
+<style>
+#loginASD {
+	border-style: inset;
+	text-align: justify;
+	width: 15%;
+}
+.loginbox {
+	position: absolute;
+}
+</style>
+</head>
+<body>
+	<div id="loginASD">
+		<form th:action="@{/login}" method="post">
+				<div id="loginbox"><label>UseName: </label><input type="text" name="username" class="form-control"/></div>
+				<div id="loginbox"><label>Password :   </label><input type="password" name="password" class="form-control"/></div>
+				<div id="loginbox"><input th:action="@{/tracklist}" type="submit" value="Sign In" /></div>
+		</form>
+		<div th:if="${param.error}">
+			Invalid username or password!
+		</div>
+	</div>
+</body>
+</html>

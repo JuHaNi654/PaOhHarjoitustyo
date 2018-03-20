@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Add Track Information</title>
+</head>
+<body>
+	<h1>Add Track Information</h1>
+			<form th:object="${track}" th:action="@{../save-track}" action="#" method="POST">
+			<label for="trackName">Track Name: </label>
+			<input type="text" id="trackName" th:field="*{trackName}" th:value="${trackName}"/>
+			<label for="trackType">Track Type: </label>
+			<input type="text" id="trackType" th:field="*{trackType}" th:value="${trackType}"/>
+			<label for="scenario">Scenario: </label>
+			<input type="text" id="scenario" th:field="*{scenario}" th:value="${scenario}"/>
+			<input type="submit" value="Save"></input>
+		</form>
+</body>
+</html>

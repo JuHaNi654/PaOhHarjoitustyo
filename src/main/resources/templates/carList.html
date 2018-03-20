@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CarList</title>
+<style>
+table {
+	border-style: inset;
+	font-size: 130%;
+	font-family:verdana;
+	text-align: justify;
+	width: 40%;
+	margin: auto;
+}
+h1 {
+	text-align: center
+}
+th, td {
+	text-align: center;
+	padding: 3px;
+	border-bottom: 4px solid black;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: grey;
+	height: 40px;
+	overflow: hidden;
+}
+li a:hover {
+	background-color: red;
+}
+li a {
+	display: inline-block;
+	padding: 14px 16px ; 
+	text-decoration: none;
+	color: white;
+	float: left;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
+		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}" class="btn btn-primary">Add Car</a></li>
+		<li>	
+			<div>
+				<div sec:authorize="isAnonymous()">
+					<a th:href="@{/login}">Sign in</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<form method="post">
+						<a th:href="@{/logout}"  type="submit">Sign out</a>					
+					</form>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<h1>Listed Cars</h1>
+		<table>
+			<tr>
+				<th>Class</th>
+				<th>Car</th>
+				<th>LapTime</th>
+			</tr>
+			<tr th:each="car: ${track.cars}">
+				<td th:text="${car.carclass.carClass}"></td>
+				<td th:text="${car.merkki} + ' ' + ${car.malli}"></td>
+				<td th:text="${car.aika}"></td>
+				<td sec:authorize="isAuthenticated()"><a th:href="@{/tracklist/{trackId}/carlist/car-info/{carId}(carId=${car.carId}, trackId=${track.trackId})}">More info</a></td>
+				<td sec:authorize="isAuthenticated()"><a th:href="@{/tracklist/{trackId}/carlist/edit-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}">Edit Car Info</a></td>
+				<td sec:authorize="isAuthenticated()"><a  th:href="@{/tracklist/{trackId}/carlist/delete-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</table>
+</body>
+</html>
