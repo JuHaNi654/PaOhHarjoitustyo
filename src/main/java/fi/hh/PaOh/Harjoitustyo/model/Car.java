@@ -12,6 +12,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Car {
@@ -20,7 +22,7 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long carId;
 	
-	@Column(name="Factory")
+	@Column(name="Brand")
 	@Size(min=2, max=20, message="Brand text size must be between 2 and 20")
 	private String merkki;
 	
@@ -59,11 +61,13 @@ public class Car {
 	@Column(name="LapTime")
 	private String aika;
 	
+	@JsonIgnore
 	@NotNull(message = "You need to pick which class car is in")
 	@ManyToOne
 	@JoinColumn(name = "carClassId")
 	private CarClass carclass;
 	
+	@JsonIgnore
 	@NotNull (message = "You need to pick which track")
 	@ManyToOne
 	@JoinColumn(name = "trackId")

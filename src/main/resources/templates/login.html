@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Login</title>
 <style>
-#loginASD {
-	border-style: inset;
-	text-align: justify;
-	width: 15%;
+h1 {
+	text-align: center
 }
-.loginbox {
-	position: absolute;
+#tableStyle {
+	border-style: inset;
+	font-size: 130%;
+	font-family: verdana;
+	text-align: justify;
+	width: 20%;
+	margin: auto;
 }
 </style>
 </head>
 <body>
-	<div id="loginASD">
+	<h1>Sign In</h1>
+	<div id="tableStyle">
 		<form th:action="@{/login}" method="post">
-				<div id="loginbox"><label>UseName: </label><input type="text" name="username" class="form-control"/></div>
-				<div id="loginbox"><label>Password :   </label><input type="password" name="password" class="form-control"/></div>
-				<div id="loginbox"><input th:action="@{/tracklist}" type="submit" value="Sign In" /></div>
+				<table>
+					<tr>
+						<td><label>UseName:</label></td>
+						<td><input type="text" name="username" class="form-control" /></td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input type="password" name="password" class="form-control" /></td>
+					</tr>
+					<tr>
+						<td><input th:action="@{/tracklist}" type="submit" value="Sign In" /></td>
+					</tr>
+				</table>
+				<div th:if="${param.error}">Invalid username or password!</div>
 		</form>
-		<div th:if="${param.error}">
-			Invalid username or password!
-		</div>
 	</div>
 </body>
 </html>

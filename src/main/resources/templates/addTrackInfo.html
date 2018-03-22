@@ -1,19 +1,93 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Add Track Information</title>
+<style>
+h1 {
+	text-align: center
+}
+
+#tableStyle {
+	border-style: inset;
+	font-size: 130%;
+	font-family: verdana;
+	text-align: justify;
+	width: 20%;
+	margin: auto;
+}
+
+#headerstuf {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: grey;
+	height: 40px;
+	overflow: hidden;
+}
+
+li a:hover {
+	background-color: red;
+}
+
+li a {
+	display: inline-block;
+	padding: 14px 16px;
+	text-decoration: none;
+	color: white;
+	float: left;
+	text-align: center;
+}
+
+#errorStyle {
+	font-size: 65%;
+}
+</style>
 </head>
 <body>
+	<ul id="headerstuf">
+		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
+		<li>
+			<div sec:authorize="isAuthenticated()">
+				<form method="post">
+					<a th:href="@{/logout}" type="submit">Sign out</a>
+				</form>
+			</div>
+		</li>
+	</ul>
 	<h1>Add Track Information</h1>
-			<form th:object="${track}" th:action="@{../save-track}" action="#" method="POST">
-			<label for="trackName">Track Name: </label>
-			<input type="text" id="trackName" th:field="*{trackName}" th:value="${trackName}"/>
-			<label for="trackType">Track Type: </label>
-			<input type="text" id="trackType" th:field="*{trackType}" th:value="${trackType}"/>
-			<label for="scenario">Scenario: </label>
-			<input type="text" id="scenario" th:field="*{scenario}" th:value="${scenario}"/>
-			<input type="submit" value="Save"></input>
-		</form>
+	<form th:object="${track}" th:action="@{../save-track}" action="#"
+		method="POST">
+		<div id="tableStyle">
+			<table>
+				<tr>
+					<td><label for="trackName">Track Name: </label></td>
+					<td><input type="text" id="trackName" th:field="*{trackName}"
+						th:value="${trackName}" /></td>
+				</tr>
+				<tr>
+					<td><label for="trackType">Track Type: </label></td>
+					<td><input type="text" id="trackType" th:field="*{trackType}"
+						th:value="${trackType}" /></td>
+				</tr>
+				<tr>
+					<td><label for="scenario">Scenario: </label></td>
+					<td><select id="scenario" th:field="*{scenario}"
+						class="form-control">
+							<option selected="selected" value="Day">Day</option>
+							<option selected="selected" value="Night">Night</option>
+							<option selected="selected" value="Rain">Rain</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Save"></input></td>
+				</tr>
+			</table>
+			<ul id="errorStyle" th:if="${#fields.hasErrors('*')}">
+				<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+			</ul>
+		</div>
+	</form>
 </body>
 </html>

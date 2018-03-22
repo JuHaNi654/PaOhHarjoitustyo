@@ -1,9 +1,6 @@
 package fi.hh.PaOh.Harjoitustyo;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
 import java.util.logging.Logger;
 
 import javax.transaction.Transactional;
@@ -49,12 +46,16 @@ public class HarjoitustyoApplication {
 			ccrepository.save(new CarClass("E"));
 			
 			trepository.save(new Track("Suzuka Circuit", "Full Circuit", "Day"));
-			trepository.save(new Track("Nurburring", "Nordchleife", "Night"));
+			trepository.save(new Track("Nurburring", "Nodschleife", "Night"));
+			trepository.save(new Track("Virginia International Raceway", "Grand East", "Day"));
+			trepository.save(new Track("Maple Valley Raceway", "Full Circuit", "Rain"));
 			
 			
-			crepository.save(new Car("Nissan", "350Z", 2008, "RWD", 270.0, 6.5, 5.4, 7.5, 5.4, "02:35.321", ccrepository.findBycarClass("B").get(0), trepository.findBytrackId(1L).get(0)));
-			crepository.save(new Car("Mazda", "RX8", 2004, "RWD", 230.0, 6.3, 5.7, 6.5, 5.9, "8:20.456", ccrepository.findBycarClass("B").get(0), trepository.findBytrackId(2L).get(0)));
-			
+			crepository.save(new Car("BMW", "M3", 2008, "RWD", 733.0, 7.8, 6.1, 9.1, 6.1, "07:21.613", ccrepository.findBycarClassId(4L).get(0), trepository.findBytrackId(2L).get(0)));
+			crepository.save(new Car("Audi", "RS6", 2013, "AWD", 629.0, 7.4, 5.7, 9.3, 6.4, "07:27.562", ccrepository.findBycarClassId(4L).get(0), trepository.findBytrackId(2L).get(0)));
+			crepository.save(new Car("Nissan", "Fairlady '69", 1969, "RWD", 379.0, 6.0, 6.0, 8.6, 6.0, "2:20.834", ccrepository.findBycarClassId(5L).get(0), trepository.findBytrackId(1L).get(0)));
+			crepository.save(new Car("Mazda", "RX-7", 1997, "RWD", 373.0, 7.7, 5.7, 8.3, 5.5, "2:56.236", ccrepository.findBycarClassId(5L).get(0), trepository.findBytrackId(3L).get(0)));
+			crepository.save(new Car("Nissan", "240SX", 1993, "RWD", 271.0, 6.3, 5.8, 7.4, 5.7, "1:56.633", ccrepository.findBycarClassId(6L).get(0), trepository.findBytrackId(4L).get(0)));
 
 
 

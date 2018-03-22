@@ -7,6 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CarRepository extends CrudRepository<Car, Long> {
 	List<Car> findBycarId(Long carId);
-	
-	<Track extends Car> Track save(Track Car);
+
 }

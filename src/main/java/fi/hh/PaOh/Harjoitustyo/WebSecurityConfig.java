@@ -10,25 +10,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import fi.hh.PaOh.Harjoitustyo.userService.UserDetailServiceImpl;
 
 @Configuration
-
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable()
+			.csrf().disable() //ottaa csrf login turvatoimen pois käytöstä
 			.authorizeRequests()
-				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist").permitAll()
+				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
-				.defaultSuccessUrl("/tracklist")
+				.defaultSuccessUrl("/tracklist") //Ohjaa tracklist sivustolle onnistuneesta sisänkirjauksesta
 				.permitAll()
 				.and()
 			.logout()
-				.logoutSuccessUrl("/tracklist")
+				.logoutSuccessUrl("/tracklist") //Ohjaa tracklist sivustolle onnistuneesta uloskirjauksesta
 				.permitAll();
 
 	}

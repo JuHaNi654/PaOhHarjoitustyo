@@ -8,14 +8,20 @@
 h1 {
 	text-align: center
 }
-table {
+
+#errorStyle {
+	font-size: 65%;
+}
+
+#tablestuf {
 	border-style: inset;
 	font-size: 130%;
-	font-family:verdana;
+	font-family: verdana;
 	text-align: justify;
-	width: 20%;
+	width: 25%;
 	margin: auto;
 }
+
 #headerstuf {
 	list-style-type: none;
 	margin: 0;
@@ -24,12 +30,14 @@ table {
 	height: 40px;
 	overflow: hidden;
 }
+
 li a:hover {
 	background-color: red;
 }
+
 li a {
 	display: inline-block;
-	padding: 14px 16px ; 
+	padding: 14px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
@@ -40,14 +48,14 @@ li a {
 <body>
 	<ul id="headerstuf">
 		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
-		<li>	
+		<li>
 			<div>
 				<div sec:authorize="isAnonymous()">
 					<a th:href="@{/login}">Sign in</a>
 				</div>
 				<div sec:authorize="isAuthenticated()">
 					<form method="post">
-						<a th:href="@{/logout}"  type="submit">Sign out</a>					
+						<a th:href="@{/logout}" type="submit">Sign out</a>
 					</form>
 				</div>
 			</div>
@@ -55,91 +63,92 @@ li a {
 	</ul>
 	<h1>Add information</h1>
 	<div>
-		<form th:object="${car}" th:action="@{/tracklist/{trackId}/carlist/save}" action="#" method="post">
-			<table>
-				<tr>
-					<th>Title</th>
-					<th>Info</th>
-				</tr>
-				<tr>
-					<td><label for="carClass">Class: </label></td>
-					<td><select id="Cclist" th:field="*{carclass}" class="form-control">
-						<option selected="selected" value="">Select</option>
-						<option th:each="carclass: ${carclass}"
-							th:value="${carclass.carClassId}" th:text="${carclass.carClass}">
-						</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><label for="merkki">Brand: </label></td>
-					<td><input type="text" id="merkki" th:field="*{merkki}" /></td>
-				</tr>
-				<tr>
-					<td><label for="malli">Model: </label></td>
-					<td><input type="text" id="malli" th:field="*{malli}" /></td>
-				</tr>
-				<tr>
-					<td><label for="vuosimalli">Year: </label></td>
-					<td><input type="text" id="vuosimalli" th:field="*{vuosimalli}" /></td>
-				</tr>
-				<tr>
-					<td><label for="veto">veto: </label></td>
-					<td><select id="veto" th:field="*{veto}" class="form-control">
-						<option selected="selected" value="">Select</option>
-						<option selected="selected" value="RWD">RWD</option>
-						<option selected="selected" value="FWD">FWD</option>
-						<option selected="selected" value="AWD">AWD</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><label for="hevosvoima">Horsepower: </label></td>
-					<td><input type="text" id="hevosvoima" th:field="*{hevosvoima}" /></td>
-				</tr>
-				<tr>
-					<td><label for="nopeus">Speed: </label></td>
-					<td><input type="text" id="nopeus" th:field="*{nopeus}" /></td>
-				</tr>
-				<tr>
-					<td><label for="ohjattavuus">Handling: </label></td>
-					<td><input type="text" id="ohjattavuus" th:field="*{ohjattavuus}" /></td>
-				</tr>
-				<tr>
-					<td><label for="kiihtyvyys">Acceleration: </label></td>
-					<td><input type="text" id="kiihtyvyys" th:field="*{kiihtyvyys}" /></td>
-				</tr>
-				<tr>
-					<td><label for="jarrutusvoima">Braking: </label></td>
-					<td><input type="text" id="jarrutusvoima" th:field="*{jarrutusvoima}" /></td>
-				</tr>
-				<tr>
-					<td><label for="aika">LapTime: </label></td>
-					<td><input type="text" th:field="*{aika}" /></td>
-				</tr>
-				<tr>
-					<td><label for="track">Track:</label></td>
-					<td><select id="Tlist" th:field="*{track}" class="form-control">
-						<option selected="selected" value="">Select</option>
-						<option th:each="track: ${tracks}" th:value="${track.trackId}"
-							th:text="${track.trackName} + '  -  ' + ${track.trackType} + '  -  ' + ${track.scenario}">
-						</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Save"></input></td>
-				</tr>
-			</table>
-			<ul>
-				<li th:if="${#fields.hasErrors('merkki')}" th:errors="*{merkki}">Error</li>
-				<li th:if="${#fields.hasErrors('malli')}" th:errors="*{malli}">Error</li>
-				<li th:if="${#fields.hasErrors('vuosimalli')}" th:errors="*{vuosimalli}">Error</li>
-				<li th:if="${#fields.hasErrors('veto')}" th:errors="*{veto}">Error</li>
-				<li th:if="${#fields.hasErrors('nopeus')}" th:errors="*{nopeus}">Error</li>
-				<li th:if="${#fields.hasErrors('ohjattavuus')}" th:errors="*{ohjattavuus}">Error</li>
-				<li th:if="${#fields.hasErrors('kiihtyvyys')}" th:errors="*{kiihtyvyys}">Error</li>
-				<li th:if="${#fields.hasErrors('jarrutusvoima')}" th:errors="*{jarrutusvoima}">Error</li>
-				<li th:if="${#fields.hasErrors('carclass')}" th:errors="*{carclass}">Error</li>	
-				<li th:if="${#fields.hasErrors('track')}" th:errors="*{track}">Error</li>
-			</ul>		
+		<form th:object="${car}"
+			th:action="@{/tracklist/{trackId}/carlist/save}" action="#"
+			method="post">
+			<div id="tablestuf">
+				<table>
+					<tr>
+						<th>Title</th>
+						<th>Info</th>
+					</tr>
+					<tr>
+						<td><label for="carClass">Class: </label></td>
+						<td><select id="Cclist" th:field="*{carclass}"
+							class="form-control">
+								<option selected="selected" value="">Select</option>
+								<option th:each="carclass: ${carclass}"
+									th:value="${carclass.carClassId}"
+									th:text="${carclass.carClass}"></option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><label for="merkki">Brand: </label></td>
+						<td><input type="text" id="merkki" th:field="*{merkki}" /></td>
+					</tr>
+					<tr>
+						<td><label for="malli">Model: </label></td>
+						<td><input type="text" id="malli" th:field="*{malli}" /></td>
+					</tr>
+					<tr>
+						<td><label for="vuosimalli">Year: </label></td>
+						<td><input type="text" id="vuosimalli"
+							th:field="*{vuosimalli}" /></td>
+					</tr>
+					<tr>
+						<td><label for="veto">veto: </label></td>
+						<td><select id="veto" th:field="*{veto}" class="form-control">
+								<option selected="selected" value="RWD">RWD</option>
+								<option selected="selected" value="FWD">FWD</option>
+								<option selected="selected" value="AWD">AWD</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><label for="hevosvoima">Horsepower: </label></td>
+						<td><input type="text" id="hevosvoima"
+							th:field="*{hevosvoima}" /></td>
+					</tr>
+					<tr>
+						<td><label for="nopeus">Speed: </label></td>
+						<td><input type="text" id="nopeus" th:field="*{nopeus}" /></td>
+					</tr>
+					<tr>
+						<td><label for="ohjattavuus">Handling: </label></td>
+						<td><input type="text" id="ohjattavuus"
+							th:field="*{ohjattavuus}" /></td>
+					</tr>
+					<tr>
+						<td><label for="kiihtyvyys">Acceleration: </label></td>
+						<td><input type="text" id="kiihtyvyys"
+							th:field="*{kiihtyvyys}" /></td>
+					</tr>
+					<tr>
+						<td><label for="jarrutusvoima">Braking: </label></td>
+						<td><input type="text" id="jarrutusvoima"
+							th:field="*{jarrutusvoima}" /></td>
+					</tr>
+					<tr>
+						<td><label for="aika">LapTime: </label></td>
+						<td><input type="text" th:field="*{aika}" /></td>
+					</tr>
+					<tr>
+						<td><label for="track">Track:</label></td>
+						<td><select id="Tlist" th:field="*{track}"
+							class="form-control">
+								<option selected="selected" value="">Select</option>
+								<option th:each="track: ${tracks}" th:value="${track.trackId}"
+									th:text="${track.trackName} + '  -  ' + ${track.trackType} + '  -  ' + ${track.scenario}">
+								</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Save"></input></td>
+					</tr>
+				</table>
+				<ul id="errorStyle" th:if="${#fields.hasErrors('*')}">
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+				</ul>
+			</div>
 		</form>
 	</div>
 </body>
