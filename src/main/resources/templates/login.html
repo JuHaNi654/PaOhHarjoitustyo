@@ -32,11 +32,12 @@ h1 {
 						<td><input type="password" name="password" class="form-control" /></td>
 					</tr>
 					<tr>
-						<td><input th:action="@{/tracklist}" type="submit" value="Sign In" /></td>
+						<td><input type="submit" value="Sign In" class="btn btn-success"/></td>
 					</tr>
 				</table>
 				<div th:if="${param.error}">Invalid username or password!</div>
 		</form>
+		<a th:href="@{/signup}">Sign Up</a>
 	</div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <title>Add Track Information</title>
 <style>
 h1 {
@@ -18,12 +18,12 @@ h1 {
 	margin: auto;
 }
 
-#headerstuf {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -33,20 +33,19 @@ li a:hover {
 
 li a {
 	display: inline-block;
-	padding: 14px 16px;
+	padding: 22px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
 	text-align: center;
 }
-
 #errorStyle {
 	font-size: 65%;
 }
 </style>
 </head>
 <body>
-	<ul id="headerstuf">
+	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
 		<li>
 			<div sec:authorize="isAuthenticated()">
@@ -75,6 +74,7 @@ li a {
 					<td><label for="scenario">Scenario: </label></td>
 					<td><select id="scenario" th:field="*{scenario}"
 						class="form-control">
+							<option selected="selected" value="">Select</option>
 							<option selected="selected" value="Day">Day</option>
 							<option selected="selected" value="Night">Night</option>
 							<option selected="selected" value="Rain">Rain</option>

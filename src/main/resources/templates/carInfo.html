@@ -18,12 +18,12 @@ h1 {
 	margin: auto;
 }
 
-ul {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -33,7 +33,7 @@ li a:hover {
 
 li a {
 	display: inline-block;
-	padding: 14px 16px;
+	padding: 22px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
@@ -42,7 +42,7 @@ li a {
 </style>
 </head>
 <body>
-	<ul>
+	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
 		<li sec:authorize="isAuthenticated()"><a
 			th:href="@{../edit-car/{carId}(carId=${carId})}">Edit Car Info</a></li>
@@ -61,67 +61,67 @@ li a {
 	</ul>
 	<h1 th:text="${car.merkki} + ' ' + ${car.malli} + ' information'"></h1>
 	<div id="tableStyle">
-	<table>
-		<tr>
-			<th>Title</th>
-			<th>Info</th>
-		</tr>
-		<tr>
-			<td>CarClass:</td>
-			<td th:text="${car.carclass.carClass}"></td>
-		</tr>
-		<tr>
-			<td>Name:</td>
-			<td th:text="${car.merkki}"></td>
-		</tr>
-		<tr>
-			<td>Model:</td>
-			<td th:text="${car.malli}"></td>
-		</tr>
-		<tr>
-			<td>Year:</td>
-			<td th:text="${car.vuosimalli}"></td>
-		</tr>
-		<tr>
-			<td>Drive:</td>
-			<td th:text="${car.veto}"></td>
-		</tr>
-		<tr>
-			<td>Horsepower:</td>
-			<td th:text="${car.hevosvoima}"></td>
-		</tr>
-		<tr>
-			<td>Speed:</td>
-			<td th:text="${car.nopeus}"></td>
-		</tr>
-		<tr>
-			<td>Handling:</td>
-			<td th:text="${car.ohjattavuus}"></td>
-		</tr>
-		<tr>
-			<td>Acceleration:</td>
-			<td th:text="${car.kiihtyvyys}"></td>
-		</tr>
-		<tr>
-			<td>Braking:</td>
-			<td th:text="${car.jarrutusvoima}"></td>
-		</tr>
-		<tr>
-			<th>Track Info</th>
-		</tr>
-		<tr>
-			<td>Track Name:</td>
-			<td th:text="${car.track.trackName}"></td>
-		</tr>
-		<tr>
-			<td>Track type:</td>
-			<td th:text="${car.track.trackType}"></td>
-		</tr>
-		<tr>
-			<td>Scenario:</td>
-			<td th:text="${car.track.scenario}"></td>
-		</tr>
-	</table>
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Info</th>
+			</tr>
+			<tr>
+				<td>CarClass:</td>
+				<td th:text="${car.carclass.carClass}"></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td th:text="${car.merkki}"></td>
+			</tr>
+			<tr>
+				<td>Model:</td>
+				<td th:text="${car.malli}"></td>
+			</tr>
+			<tr>
+				<td>Year:</td>
+				<td th:text="${car.vuosimalli}"></td>
+			</tr>
+			<tr>
+				<td>Drive:</td>
+				<td th:text="${car.veto}"></td>
+			</tr>
+			<tr>
+				<td>Horsepower:</td>
+				<td th:text="${car.hevosvoima}"></td>
+			</tr>
+			<tr>
+				<td>Speed:</td>
+				<td th:text="${car.nopeus}"></td>
+			</tr>
+			<tr>
+				<td>Handling:</td>
+				<td th:text="${car.ohjattavuus}"></td>
+			</tr>
+			<tr>
+				<td>Acceleration:</td>
+				<td th:text="${car.kiihtyvyys}"></td>
+			</tr>
+			<tr>
+				<td>Braking:</td>
+				<td th:text="${car.jarrutusvoima}"></td>
+			</tr>
+			<tr>
+				<th>Track Info</th>
+			</tr>
+			<tr>
+				<td>Track Name:</td>
+				<td th:text="${car.track.trackName}"></td>
+			</tr>
+			<tr>
+				<td>Track type:</td>
+				<td th:text="${car.track.trackType}"></td>
+			</tr>
+			<tr>
+				<td>Scenario:</td>
+				<td th:text="${car.track.scenario}"></td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

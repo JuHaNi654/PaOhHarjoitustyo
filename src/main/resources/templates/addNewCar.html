@@ -3,17 +3,14 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Insert Data</title>
 <style>
 h1 {
 	text-align: center
 }
 
-#errorStyle {
-	font-size: 65%;
-}
-
-#tablestuf {
+#tableStyle {
 	border-style: inset;
 	font-size: 130%;
 	font-family: verdana;
@@ -21,13 +18,12 @@ h1 {
 	width: 25%;
 	margin: auto;
 }
-
-#headerstuf {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -37,16 +33,19 @@ li a:hover {
 
 li a {
 	display: inline-block;
-	padding: 14px 16px;
+	padding: 22px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
 	text-align: center;
 }
+#errorStyle {
+	font-size: 65%;
+}
 </style>
 </head>
 <body>
-	<ul id="headerstuf">
+	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
 		<li>
 			<div>
@@ -66,7 +65,7 @@ li a {
 		<form th:object="${car}"
 			th:action="@{/tracklist/{trackId}/carlist/save}" action="#"
 			method="post">
-			<div id="tablestuf">
+			<div id="tableStyle">
 				<table>
 					<tr>
 						<th>Title</th>
@@ -98,6 +97,7 @@ li a {
 					<tr>
 						<td><label for="veto">veto: </label></td>
 						<td><select id="veto" th:field="*{veto}" class="form-control">
+								<option selected="selected" value="">Select</option>
 								<option selected="selected" value="RWD">RWD</option>
 								<option selected="selected" value="FWD">FWD</option>
 								<option selected="selected" value="AWD">AWD</option>

@@ -3,6 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Track Info</title>
 <style>
 #tableStyle {
@@ -10,8 +11,9 @@
 	font-size: 130%;
 	font-family: verdana;
 	text-align: justify;
-	width: 40%;
+	width: 50%;
 	margin: auto;
+
 }
 
 h1 {
@@ -24,7 +26,7 @@ th, td {
 	border-bottom: 4px solid black;
 }
 
-ul {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -44,18 +46,18 @@ li a {
 	color: white;
 	float: left;
 	text-align: center;
-}
-#signIO {
-	position: right;
+
 }
 #helloText {
-	margin-left: 1000px;
+	padding: 13px 100px;
+	float: right;
+	font-size: 30px;
 
 }
 </style>
 </head>
 <body>
-	<ul>
+	<ul id="headerStyle">
 		<li sec:authorize="isAuthenticated()"><a th:href="@{/addtrack}">Add
 				New Track</a></li>
 		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}"
@@ -72,6 +74,7 @@ li a {
 				</div>
 			</div>
 		</li>
+		<li sec:authorize="isAuthenticated()" id="helloText" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</li>
 	</ul>
 	<H1>Track list</H1>
 		<table id="tableStyle">
@@ -85,6 +88,7 @@ li a {
 				<td th:text="${track.trackType}"></td>
 				<td th:text="${track.Scenario}"></td>
 				<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}">Car List</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}">Delete Track</a></td>
 			</tr>
 		</table>
 </body>

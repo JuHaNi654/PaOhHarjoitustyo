@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 
 @Entity
@@ -32,7 +34,8 @@ public class Track {
 	private String trackType;
 	
 	@Column(name="Scenario")
-	@NotNull(message = "You must pick scenario Day, Night or Rain")
+	@NotEmpty(message = "You must pick scenario Day, Night or Rain")
+	@NotNull
 	private String scenario;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "track")

@@ -12,6 +12,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -27,7 +29,7 @@ public class Car {
 	private String merkki;
 	
 	@Column(name="Model")
-	@Size(max=60, message="Model text size must be max. 60 char")
+	@Size(max=60, message="Model text size must be max. 60 ")
 	private String malli;
 	
 	@Column(name="Year")
@@ -35,7 +37,8 @@ public class Car {
 	@Max(value = 2020, message="Year must be between 1900 and 2020")
 	private int vuosimalli;
 	
-	@NotNull(message="You must pick AWD, RWD or FWD")
+	@NotEmpty(message="You must pick AWD, RWD or FWD")
+	@NotNull
 	@Column(name="Drive")
 	private String veto;
 	

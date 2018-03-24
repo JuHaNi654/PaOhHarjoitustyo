@@ -6,13 +6,14 @@
 <title>CarList</title>
 
 <style>
-table {
+#tableStyle {
 	border-style: inset;
 	font-size: 130%;
 	font-family: verdana;
 	text-align: justify;
 	width: 40%;
 	margin: auto;
+	
 }
 
 h1, h2 {
@@ -23,14 +24,15 @@ th, td {
 	text-align: center;
 	padding: 3px;
 	border-bottom: 4px solid black;
+	text-decoration: none;
 }
 
-ul {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -40,7 +42,7 @@ li a:hover {
 
 li a {
 	display: inline-block;
-	padding: 14px 16px;
+	padding: 22px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
@@ -49,7 +51,7 @@ li a {
 </style>
 </head>
 <body>
-	<ul>
+	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
 		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}"
 			class="btn btn-primary">Add Car</a></li>

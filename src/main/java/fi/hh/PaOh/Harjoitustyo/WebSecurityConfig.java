@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import fi.hh.PaOh.Harjoitustyo.userService.UserDetailServiceImpl;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;
@@ -18,7 +19,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable() //ottaa csrf login turvatoimen pois käytöstä
 			.authorizeRequests()
-				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}").permitAll()
+				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}", "/signup", "/saveuser").permitAll()
+				.antMatchers("/tracklist/delete/{trackId}").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

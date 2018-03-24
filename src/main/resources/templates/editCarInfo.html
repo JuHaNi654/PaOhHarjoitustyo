@@ -18,12 +18,12 @@ h1 {
 	margin: auto;
 }
 
-ul {
+#headerStyle {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	background-color: grey;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -33,7 +33,7 @@ li a:hover {
 
 li a {
 	display: inline-block;
-	padding: 14px 16px;
+	padding: 22px 16px;
 	text-decoration: none;
 	color: white;
 	float: left;
@@ -42,7 +42,7 @@ li a {
 </style>
 </head>
 <body>
-	<ul>
+	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}" class="btn btn-warning"
 			th:attr="onclick='return confirm(\'' + 'Are you sure, that you want leave without saving data' + '\');'">GoTo Tracks</a></li>
 		<li>
