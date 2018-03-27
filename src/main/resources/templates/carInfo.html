@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title th:text="${car.malli}"></title>
+<title ></title>
 <style>
 h1 {
 	text-align: center
@@ -59,66 +59,66 @@ li a {
 			</div>
 		</li>
 	</ul>
-	<h1 th:text="${car.merkki} + ' ' + ${car.malli} + ' information'"></h1>
+	<h1 th:text="${car.merkki} + ' ' + ${car.malli} + ' ' + #{information}"></h1>
 	<div id="tableStyle">
 		<table>
 			<tr>
-				<th>Title</th>
-				<th>Info</th>
+				<th th:text="#{title}"></th>
+				<th th:text="#{info}"></th>
 			</tr>
 			<tr>
-				<td>CarClass:</td>
+				<td th:text="#{carclass}"></td>
 				<td th:text="${car.carclass.carClass}"></td>
 			</tr>
 			<tr>
-				<td>Name:</td>
+				<td th:text="#{name}"></td>
 				<td th:text="${car.merkki}"></td>
 			</tr>
 			<tr>
-				<td>Model:</td>
+				<td th:text="#{model}"></td>
 				<td th:text="${car.malli}"></td>
 			</tr>
 			<tr>
-				<td>Year:</td>
+				<td th:text="#{year}"></td>
 				<td th:text="${car.vuosimalli}"></td>
 			</tr>
 			<tr>
-				<td>Drive:</td>
+				<td th:text="#{drive}"></td>
 				<td th:text="${car.veto}"></td>
 			</tr>
 			<tr>
-				<td>Horsepower:</td>
+				<td th:text="#{horsepower}"></td>
 				<td th:text="${car.hevosvoima}"></td>
 			</tr>
 			<tr>
-				<td>Speed:</td>
+				<td th:text="#{speed}"></td>
 				<td th:text="${car.nopeus}"></td>
 			</tr>
 			<tr>
-				<td>Handling:</td>
+				<td th:text="#{handling}"></td>
 				<td th:text="${car.ohjattavuus}"></td>
 			</tr>
 			<tr>
-				<td>Acceleration:</td>
+				<td th:text="#{acceleration}"></td>
 				<td th:text="${car.kiihtyvyys}"></td>
 			</tr>
 			<tr>
-				<td>Braking:</td>
+				<td th:text="#{braking}"></td>
 				<td th:text="${car.jarrutusvoima}"></td>
 			</tr>
 			<tr>
-				<th>Track Info</th>
+				<th th:text="#{trackinfo}"></th>
 			</tr>
 			<tr>
-				<td>Track Name:</td>
+				<td th:text="#{trackname}"></td>
 				<td th:text="${car.track.trackName}"></td>
 			</tr>
 			<tr>
-				<td>Track type:</td>
+				<td th:text="#{tracktype}"></td>
 				<td th:text="${car.track.trackType}"></td>
 			</tr>
 			<tr>
-				<td>Scenario:</td>
+				<td th:text="#{scenario}"></td>
 				<td th:text="${car.track.scenario}"></td>
 			</tr>
 		</table>

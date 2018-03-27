@@ -70,7 +70,7 @@ li a {
 						class="form-control" /></td>
 				</tr>
 				<tr>
-					<td><label for="${Cclass}">CarClass</label></td>
+					<td><label for="${Cclass}" th:text="#{carclass}"></label></td>
 					<td><select id="Cclass" th:field="*{carclass}"
 						class="form-control">
 							<option th:each="carclass: ${carclass}"
@@ -79,19 +79,19 @@ li a {
 					</select></td>
 				</tr>
 				<tr>
-					<td><label for="merkki">Brand: </label></td>
+					<td><label for="merkki" th:text="#{name}"> </label></td>
 					<td><input type="text" th:field="*{merkki}" /></td>
 				</tr>
 				<tr>
-					<td><label for="malli">Model: </label></td>
+					<td><label for="malli" th:text="#{model}"> </label></td>
 					<td><input type="text" th:field="*{malli}" /></td>
 				</tr>
 				<tr>
-					<td><label for="vuosimalli">Year: </label></td>
+					<td><label for="vuosimalli" th:text="#{year}"> </label></td>
 					<td><input type="text" th:field="*{vuosimalli}" /></td>
 				</tr>
 				<tr>
-					<td><label for="veto">veto: </label></td>
+					<td><label for="veto" th:text="#{drive}"></label></td>
 					<td><select id="veto" th:field="*{veto}" class="form-control">
 							<option selected="selected" value="RWD">RWD</option>
 							<option selected="selected" value="FWD">FWD</option>
@@ -99,31 +99,31 @@ li a {
 					</select></td>
 				</tr>
 				<tr>
-					<td><label for="hevosvoima">Horsepower: </label></td>
+					<td><label for="hevosvoima" th:text="#{horsepower}"> </label></td>
 					<td><input type="text" th:field="*{hevosvoima}" /></td>
 				</tr>
 				<tr>
-					<td><label for="nopeus">Speed: </label></td>
+					<td><label for="nopeus" th:text="#{speed}"> </label></td>
 					<td><input type="text" th:field="*{nopeus}" /></td>
 				</tr>
 				<tr>
-					<td><label for="ohjattavuus">Handling: </label></td>
+					<td><label for="ohjattavuus" th:text="#{handling}"> </label></td>
 					<td><input type="text" th:field="*{ohjattavuus}" /></td>
 				</tr>
 				<tr>
-					<td><label for="kiihtyvyys">Acceleration: </label></td>
+					<td><label for="kiihtyvyys" th:text="#{acceleration}"> </label></td>
 					<td><input type="text" th:field="*{kiihtyvyys}" /></td>
 				</tr>
 				<tr>
-					<td><label for="jarrutusvoima">Braking: </label></td>
+					<td><label for="jarrutusvoima" th:text="#{braking}"> </label></td>
 					<td><input type="text" th:field="*{jarrutusvoima}" /></td>
 				</tr>
 				<tr>
-					<td><label for="aika">LapTime: </label></td>
+					<td><label for="aika" th:text="#{laptime}"></label></td>
 					<td><input type="text" th:field="*{aika}" /></td>
 				</tr>
 				<tr>
-					<td><label for="${Tlist}">Track</label></td>
+					<td><label for="${Tlist}" th:text="#{trackS}"></label></td>
 					<td><select id="Tlist" th:field="*{track}"
 						class="form-control">
 							<option th:each="track: ${tracks}" th:value="${track.trackId}"

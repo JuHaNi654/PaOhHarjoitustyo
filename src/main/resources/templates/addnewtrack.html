@@ -55,23 +55,23 @@ li a {
 			</div>
 		</li>
 	</ul>
-	<h1>Add Track Information</h1>
+	<h1 th:text="#{username}">Add Track Information</h1>
 	<form th:object="${track}" th:action="@{../save-track}" action="#"
 		method="POST">
 		<div id="tableStyle">
 			<table>
 				<tr>
-					<td><label for="trackName">Track Name: </label></td>
+					<td><label for="trackName" th:text="#{trackname}">Track Name: </label></td>
 					<td><input type="text" id="trackName" th:field="*{trackName}"
 						th:value="${trackName}" /></td>
 				</tr>
 				<tr>
-					<td><label for="trackType">Track Type: </label></td>
+					<td><label for="trackType" th:text="#{tracktype}">Track Type: </label></td>
 					<td><input type="text" id="trackType" th:field="*{trackType}"
 						th:value="${trackType}" /></td>
 				</tr>
 				<tr>
-					<td><label for="scenario">Scenario: </label></td>
+					<td><label for="scenario" th:text="#{scenario}">Scenario: </label></td>
 					<td><select id="scenario" th:field="*{scenario}"
 						class="form-control">
 							<option selected="selected" value="">Select</option>

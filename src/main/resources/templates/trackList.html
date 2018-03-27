@@ -84,21 +84,21 @@ li a {
 		<li sec:authorize="isAuthenticated()" id="helloText" th:inline="text"><span th:text="#{welcome}"></span>
 			[[${#httpServletRequest.remoteUser}]]</li>
 	</ul>
-	<H1>Tracklist</H1>
+	<H1 th:text="#{tracklist}"></H1>
 
 	<table id="tableStyle">
 		<tr>
-			<th>Track Name</th>
-			<th>Track Type</th>
-			<th>Scenario</th>
+			<th th:text="#{trackname}"></th>
+			<th th:text="#{tracktype}"></th>
+			<th th:text="#{scenario}"></th>
 		</tr>
 		<tr th:each="track: ${tracks}">
 			<td th:text="${track.trackName}"></td>
 			<td th:text="${track.trackType}"></td>
 			<td th:text="${track.Scenario}"></td>
-			<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}">Carlist</a></td>
+			<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}" th:text="#{carlist}"></a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}" >Delete Track</a></td>
+				th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}" th:text="#{delTrack}" ></a></td>
 		</tr>
 	</table>
 	<div id="selLag">

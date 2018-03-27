@@ -68,25 +68,25 @@ li a {
 		</li>
 	</ul>
 	<h1 th:text="${track.trackName} + ' - ' + ${track.trackType} + ' - ' + ${track.scenario}"></h1>
-	<h2>Listed Cars</h2>
+	<h2 th:text="#{listedcars}"></h2>
 	<div id="tableStyle">
 		<table>
 			<tr>
-				<th>CarClass</th>
-				<th>Car</th>
-				<th>LapTime</th>
+				<th th:text="#{carclass}"></th>
+				<th th:text="#{car}"></th>
+				<th th:text="#{laptime}"></th>
 			</tr>
 			<tr th:each="car: ${track.cars}">
 				<td th:text="${car.carclass.carClass}"></td>
 				<td th:text="${car.merkki} + ' ' + ${car.malli}"></td>
 				<td th:text="${car.aika}"></td>
 				<td><a
-					th:href="@{/tracklist/{trackId}/carlist/car-info/{carId}(carId=${car.carId}, trackId=${track.trackId})}" >More Info</a></td>
+					th:href="@{/tracklist/{trackId}/carlist/car-info/{carId}(carId=${car.carId}, trackId=${track.trackId})}" th:text="#{moreinfo}"></a></td>
 				<td sec:authorize="isAuthenticated()"><a
-					th:href="@{/tracklist/{trackId}/carlist/edit-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}" >Edit Car Info</a></td>
+					th:href="@{/tracklist/{trackId}/carlist/edit-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}" th:text="#{editCarInfo}"></a></td>
 				<td sec:authorize="isAuthenticated()"><a
 					th:href="@{/tracklist/{trackId}/carlist/delete-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}"
-					class="btn btn-danger" th:text="'Delete'"
+					class="btn btn-danger" th:text="#{deletecar}"
 					th:attr="onclick='return confirm(\'' + 'Confirm to delete data' + '\');'"></a></td>
 			</tr>
 		</table>
