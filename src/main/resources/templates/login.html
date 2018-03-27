@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Login</title>
+
 <style>
 h1 {
 	text-align: center
@@ -19,16 +20,16 @@ h1 {
 </style>
 </head>
 <body>
-	<h1>Sign In</h1>
+	<h1 th:text="#{Log_on}"></h1>
 	<div id="tableStyle">
 		<form th:action="@{/login}" method="post">
 				<table>
 					<tr>
-						<td><label>UseName:</label></td>
+						<td><label th:text="#{username}"></label></td>
 						<td><input type="text" name="username" class="form-control" /></td>
 					</tr>
 					<tr>
-						<td><label>Password:</label></td>
+						<td><label th:text="#{password}"></label></td>
 						<td><input type="password" name="password" class="form-control" /></td>
 					</tr>
 					<tr>

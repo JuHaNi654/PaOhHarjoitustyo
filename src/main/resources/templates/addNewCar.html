@@ -46,15 +46,12 @@ li a {
 </head>
 <body>
 	<ul id="headerStyle">
-		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
+		<li><a th:href="@{/tracklist}" th:text="#{GTT}"></a></li>
 		<li>
 			<div>
-				<div sec:authorize="isAnonymous()">
-					<a th:href="@{/login}">Sign in</a>
-				</div>
 				<div sec:authorize="isAuthenticated()">
 					<form method="post">
-						<a th:href="@{/logout}" type="submit">Sign out</a>
+						<a th:href="@{/logout}" type="submit" th:text="#{SignOut}"></a>
 					</form>
 				</div>
 			</div>

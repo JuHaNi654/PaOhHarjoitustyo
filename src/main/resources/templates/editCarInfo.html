@@ -44,16 +44,16 @@ li a {
 <body>
 	<ul id="headerStyle">
 		<li><a th:href="@{/tracklist}" class="btn btn-warning"
-			th:attr="onclick='return confirm(\'' + 'Are you sure, that you want leave without saving data' + '\');'">GoTo Tracks</a></li>
+			th:attr="onclick='return confirm(\'' + 'Are you sure, that you want leave without saving data' + '\');'" th:text="#{GTT}"></a></li>
 		<li>
 			<div>
 				<div sec:authorize="isAnonymous()">
-					<a th:href="@{/login}">Sign in</a>
+					<a th:href="@{/login}" th:text="#{SignIn}"></a>
 				</div>
 				<div sec:authorize="isAuthenticated()">
 					<form method="post">
 						<a th:href="@{/logout}" type="submit"
-							th:attr="onclick='return confirm(\'' + 'Are you sure, that you want sign out without saving data' + '\');'">Sign out</a>
+							th:attr="onclick='return confirm(\'' + 'Are you sure, that you want sign out without saving data' + '\');'" th:text="#{SignOut}"></a>
 					</form>
 				</div>
 			</div>

@@ -17,9 +17,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable() //ottaa csrf login turvatoimen pois käytöstä
+			.csrf().disable() 
 			.authorizeRequests()
 				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}", "/signup", "/saveuser").permitAll()
+				.antMatchers("/", "/cars", "/cars/{carId}", "/tracks", "/tracks/{trackId}", "/carclass", "/carclass/{carClass}").permitAll()
 				.antMatchers("/tracklist/delete/{trackId}").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and()

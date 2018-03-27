@@ -3,16 +3,16 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>CarList</title>
-
+<title th:text="#{carlist.title}"></title>
 <style>
 #tableStyle {
 	border-style: inset;
 	font-size: 130%;
 	font-family: verdana;
 	text-align: justify;
-	width: 40%;
+	width: 38%;
 	margin: auto;
+
 	
 }
 
@@ -23,8 +23,7 @@ h1, h2 {
 th, td {
 	text-align: center;
 	padding: 3px;
-	border-bottom: 4px solid black;
-	text-decoration: none;
+
 }
 
 #headerStyle {
@@ -52,17 +51,17 @@ li a {
 </head>
 <body>
 	<ul id="headerStyle">
-		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
+		<li><a th:href="@{/tracklist}" th:text="#{GTT}"></a></li>
 		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}"
-			class="btn btn-primary">Add Car</a></li>
+			class="btn btn-primary" th:text="#{addCar}"></a></li>
 		<li>
 			<div>
 				<div sec:authorize="isAnonymous()">
-					<a th:href="@{/login}">Sign in</a>
+					<a th:href="@{/login}" th:text="#{SignIn}"></a>
 				</div>
 				<div sec:authorize="isAuthenticated()">
 					<form method="post">
-						<a th:href="@{/logout}" type="submit">Sign out</a>
+						<a th:href="@{/logout}" type="submit" th:text="#{SignOut}"></a>
 					</form>
 				</div>
 			</div>
@@ -73,7 +72,7 @@ li a {
 	<div id="tableStyle">
 		<table>
 			<tr>
-				<th>Class</th>
+				<th>CarClass</th>
 				<th>Car</th>
 				<th>LapTime</th>
 			</tr>
@@ -82,16 +81,13 @@ li a {
 				<td th:text="${car.merkki} + ' ' + ${car.malli}"></td>
 				<td th:text="${car.aika}"></td>
 				<td><a
-					th:href="@{/tracklist/{trackId}/carlist/car-info/{carId}(carId=${car.carId}, trackId=${track.trackId})}">More
-						info</a></td>
+					th:href="@{/tracklist/{trackId}/carlist/car-info/{carId}(carId=${car.carId}, trackId=${track.trackId})}" >More Info</a></td>
 				<td sec:authorize="isAuthenticated()"><a
-					th:href="@{/tracklist/{trackId}/carlist/edit-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}">Edit
-						Car Info</a></td>
+					th:href="@{/tracklist/{trackId}/carlist/edit-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}" >Edit Car Info</a></td>
 				<td sec:authorize="isAuthenticated()"><a
 					th:href="@{/tracklist/{trackId}/carlist/delete-car/{carId}(carId=${car.carId}, trackId=${track.trackId})}"
 					class="btn btn-danger" th:text="'Delete'"
 					th:attr="onclick='return confirm(\'' + 'Confirm to delete data' + '\');'"></a></td>
-
 			</tr>
 		</table>
 	</div>

@@ -1,6 +1,5 @@
 package fi.hh.PaOh.Harjoitustyo;
 
-
 import javax.transaction.Transactional;
 
 
@@ -17,6 +16,7 @@ import fi.hh.PaOh.Harjoitustyo.model.Track;
 import fi.hh.PaOh.Harjoitustyo.model.TrackRepository;
 import fi.hh.PaOh.Harjoitustyo.model.User;
 import fi.hh.PaOh.Harjoitustyo.model.UserRepository;
+
 
 @SpringBootApplication
 public class HarjoitustyoApplication {

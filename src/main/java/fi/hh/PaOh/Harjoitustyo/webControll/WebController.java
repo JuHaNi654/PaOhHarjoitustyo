@@ -42,19 +42,19 @@ public class WebController {
 	@RequestMapping(value="/tracklist")
 	public String trackList(Model model) {
 		model.addAttribute("tracks", trepository.findAll());
-		return "trackList";
+		return "tracklist";
 	}
 	//Mahdollisuus lisätä uuden radan
 	@GetMapping("/addtrack")
 	public String addNewTrack(Model model) {
 		model.addAttribute("track", new Track());
-		return "addTrackInfo";
+		return "addnewtrack";
 	}
 	//Tallentaa uuden lisätyn radan tietokantaan
 	@PostMapping("/save-track")
 	public String saveNewTrack(@Valid Track track, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
-			return "addTrackInfo";
+			return "addnewtrack";
 		}
 		trepository.save(track);
 		return "redirect:/tracklist";
@@ -64,14 +64,14 @@ public class WebController {
 	public String carList(@PathVariable("trackId") Long trackId, Model model) {
 		model.addAttribute("track", trepository.findOne(trackId));
 		model.addAttribute("cars", crepository.findAll());
-		return "carList";
+		return "carlist";
 	}
 	
 	//Valitsee tietyn auton ja saa sen autosta tarkemmat tiedot
 	@GetMapping(value="/tracklist/{trackId}/carlist/car-info/{carId}")
 	public String getCarInfo(@PathVariable("carId") Long carId, Model model) {
 		model.addAttribute("car", crepository.findOne(carId));
-		return "carInfo";
+		return "carinfo";
 	}
 	//Lisää auton
 	@GetMapping(value="/addcar")
@@ -79,7 +79,7 @@ public class WebController {
 		model.addAttribute("tracks", trepository.findAll());
 		model.addAttribute("car", new Car());
 		model.addAttribute("carclass", ccrepository.findAll());
-		return "addNewCar";
+		return "addnewcar";
 	}
 
 	//Tallentaa lisätyn tai muokatun auton.
@@ -88,7 +88,7 @@ public class WebController {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("tracks", trepository.findAll());
 			model.addAttribute("carclass", ccrepository.findAll());
-			return "addNewCar";
+			return "addnewcar";
 		}
 		crepository.save(car);
 		return "redirect:/tracklist";
@@ -99,7 +99,7 @@ public class WebController {
 		model.addAttribute("car", crepository.findOne(carId));
 		model.addAttribute("carclass", ccrepository.findAll());
 		model.addAttribute("tracks", trepository.findAll());
-		return "editCarInfo";
+		return "editcarinfo";
 	}
 	//Poistaa valitun auton tietystä radasta
 	@GetMapping(value="/tracklist/{trackId}/carlist/delete-car/{carId}")
@@ -149,5 +149,6 @@ public class WebController {
 	public @ResponseBody CarClass findCarClassRest(@PathVariable("carClass") String carClass) {
 		return ccrepository.findBycarClassIgnoreCase(carClass);
 	}
+
 }
 	

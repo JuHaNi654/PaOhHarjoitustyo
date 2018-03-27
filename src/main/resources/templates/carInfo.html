@@ -43,17 +43,17 @@ li a {
 </head>
 <body>
 	<ul id="headerStyle">
-		<li><a th:href="@{/tracklist}">Go To Tracks</a></li>
+		<li><a th:href="@{/tracklist}" th:text="#{GTT}"></a></li>
 		<li sec:authorize="isAuthenticated()"><a
-			th:href="@{../edit-car/{carId}(carId=${carId})}">Edit Car Info</a></li>
+			th:href="@{../edit-car/{carId}(carId=${carId})}" th:text="#{editCarInfo}"></a></li>
 		<li>
 			<div>
 				<div sec:authorize="isAnonymous()">
-					<a th:href="@{/login}">Sign in</a>
+					<a th:href="@{/login}" th:text="#{SignIn}"></a>
 				</div>
 				<div sec:authorize="isAuthenticated()">
 					<form method="post">
-						<a th:href="@{/logout}" type="submit">Sign out</a>
+						<a th:href="@{/logout}" type="submit" th:text="#{SignIn}"></a>
 					</form>
 				</div>
 			</div>

@@ -19,23 +19,23 @@ h1 {
 </style>
 </head>
 <body>
-	<h1>Create Account</h1>
+	<h1 th:text="#{creatAc}"></h1>
 	<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post" >
 		<Table id="tableStyle">
 			<tr>
-				<td><label>*Username:</label></td>
+				<td><label th:text="#{username}"></label></td>
 				<td><input type="text" th:field="*{username}" class="form-control"></input></td>
 			</tr>
 			<tr>
-				<td><label>*Password:</label></td>
+				<td><label th:text="#{password}"></label></td>
 				<td><input type="password" th:field="*{password}" class="form-control"></input></td>
 			</tr>
 			<tr>
-				<td><label>*Re-type Password:</label></td>
+				<td><label th:text="#{repass}"></label></td>
 				<td><input type="password" th:field="*{passwordCheck}" class="form-control"></input></td>
 			</tr>
 			<tr>
-				<td><label>Email:</label></td>
+				<td><label th:text="#{email}"></label></td>
 				<td><input type="userEmail" th:field="*{userEmail}" class="form-control"></input></td>
 			</tr>
 			<tr>
