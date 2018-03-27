@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Track Info</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- Javascripti lisätään, jotta voidaan vaihtaa kieltä valikon avulla eikä osoitteen kautta -->
+<!-- javascript lisätään, jotta voidaan vaihtaa kieltä valikon avulla eikä osoitteen kautta -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#locales").change(function() {
-			var selectedOption = $('#locales').val();
-			if (selectedOption !== '') {
-				window.location.replace('?lang=' + selectedOption);
+			var selectedLang = $('#locales').val();
+			if(selectedLang !== ''){
+				window.location.replace('?lang=' + selectedLang);
 			}
 		});
 	});
@@ -26,17 +26,14 @@
 	width: 50%;
 	margin: auto;
 }
-
 h1 {
 	text-align: center
 }
-
 th, td {
 	text-align: center;
 	padding: 3px;
 	border-bottom: 4px solid black;
 }
-
 #headerStyle {
 	list-style-type: none;
 	margin: 0;
@@ -45,11 +42,9 @@ th, td {
 	height: 60px;
 	overflow: hidden;
 }
-
 li a:hover {
 	background-color: red;
 }
-
 li a {
 	display: inline-block;
 	padding: 22px 16px;
@@ -58,7 +53,6 @@ li a {
 	float: left;
 	text-align: center;
 }
-
 #helloText {
 	padding: 13px 100px;
 	float: right;
@@ -72,9 +66,9 @@ li a {
 </head>
 <body>
 	<ul id="headerStyle">
-		<li sec:authorize="isAuthenticated()"><a th:href="@{/addtrack}" th:text="#{newtrack}"></a></li>
+		<li sec:authorize="isAuthenticated()"><a th:href="@{/addtrack}" th:text="#{newTrack}"></a></li>
 		<li sec:authorize="isAuthenticated()"><a th:href="@{/addcar}"
-			class="btn btn-primary" th:text="#{addCar}"></a></li>
+			class="btn btn-primary" th:text="#{newCar}"></a></li>
 		<li id="signIO">
 			<div>
 				<div sec:authorize="isAnonymous()">
