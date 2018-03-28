@@ -28,7 +28,7 @@ public class AccountController {
 	}
 	
 	//Methodi Tallentaa luodun käyttäjän, jos ei tulee Minkäälaista erroria 
-	//ja jos tietyllä nimellä ei ole jo luotu käyttäjää
+	//ja tarkistaa myös onko samalla käyttäjätunnuksella jo luotu käyttäjää
 	@PostMapping(value="/saveuser")
 	public String saveUser(@Valid @ModelAttribute("signupform") SignUpForm signUpForm, BindingResult bindingResult) {
 		if(!bindingResult.hasErrors()) {

@@ -19,7 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable() 
 			.authorizeRequests()
+				//Ei tarvitse olla sisäänkirjautunut, jotta voi päästä näille sivuille
 				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}", "/signup", "/saveuser").permitAll()
+				//Ei tarvitse olla sisäänkirjautunut, jotta voi käyttää Rest-methodeja
 				.antMatchers("/", "/cars", "/cars/{carId}", "/tracks", "/tracks/{trackId}", "/carclass", "/carclass/{carClass}").permitAll()
 				.antMatchers("/tracklist/delete/{trackId}").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
