@@ -2,7 +2,6 @@ package fi.hh.PaOh.Harjoitustyo;
 
 import java.util.Locale;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -29,6 +28,7 @@ public class InternationalizationConfig extends WebMvcConfigurerAdapter {
 		lci.setParamName("lang");
 		return lci;
 	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());

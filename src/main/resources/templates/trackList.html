@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title th:text="#{titleTracklist}"></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- javascript lisätään, jotta voidaan vaihtaa kieltä valikon avulla eikä osoitteen kautta -->
+<!-- javascript lisätään, jotta voidaan vaihtaa kieltä selectin avulla eikä osoitteen kautta -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#locales").change(function() {
@@ -98,7 +98,9 @@ li a {
 			<td th:text="${track.Scenario}"></td>
 			<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}" th:text="#{carlist}"></a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}" th:text="#{delTrack}" ></a></td>
+				th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}"
+				class="btn btn-danger" th:text="#{delTrack}"
+				th:attr="onclick='return confirm(\'' + 'Confirm to delete data' + '\');'"></a></td>
 		</tr>
 	</table>
 	<div id="selLag">
