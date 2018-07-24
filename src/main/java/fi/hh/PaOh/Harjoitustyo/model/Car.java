@@ -25,53 +25,59 @@ public class Car {
 	private long carId;
 	
 	@Column(name="Brand")
-	@Size(min=2, max=20, message="Brand text size must be between 2 and 20")
+	@Size(min=2, max=20, message="{validation.brand.textSize}")
 	private String merkki;
 	
 	@Column(name="Model")
-	@Size(max=60, message="Model text size must be max. 60 ")
+	@Size(min=2, max=60, message="{validation.model.textSize}")
 	private String malli;
 	
 	@Column(name="Year")
-	@Min(value = 1900, message="Year must be between 1900 and 2020")
-	@Max(value = 2020, message="Year must be between 1900 and 2020")
+	@Min(value = 1900, message="{validation.year.min}")
+	@Max(value = 2020, message="{validation.year.max}")
 	private int vuosimalli;
 	
-	@NotEmpty(message="You must pick AWD, RWD or FWD")
+	@NotEmpty(message="{validation.drive.notEmpty}")
 	@NotNull
 	@Column(name="Drive")
 	private String veto;
 	
 	@Column(name="Horsepower")
+	@Max(value = 1000, message="{validation.horsepower.maxValue}")
+	@Min(value = 30, message="{validation.horsepower.minValue}")
 	private double hevosvoima;
 	
 	@Column(name="Speed")
-	@Max(value = 10, message="Speed stat can be 10.0 at max")
+	@Max(value = 10, message="{validation.speed.maxValue}")
+	@Min(value = 1, message="{validation.speed.minValue}")
 	private double nopeus;
 	
 	@Column(name="Handling")
-	@Max(value = 10, message="Handling stat can be 10.0 at max")
+	@Max(value = 10, message="{validation.handling.maxValue}")
+	@Min(value = 1, message="{validation.handling.minValue}")
 	private double ohjattavuus;
 	
 	@Column(name="Acceleration")
-	@Max(value = 10, message="Acceleration stat can be 10.0 at max")
+	@Max(value = 10, message="{validation.acceleration.maxValue}")
+	@Min(value = 1, message="{validation.acceleration.minValue}")
 	private double kiihtyvyys;
 	
 	@Column(name="Braking")
-	@Max(value = 10, message="Braking stat can be 10.0 at max")
+	@Max(value = 10, message="{validation.braking.maxValue}")
+	@Min(value = 1, message="{validation.braking.minValue}")
 	private double jarrutusvoima;
 	
 	@Column(name="LapTime")
 	private String aika;
 	
 	@JsonIgnore
-	@NotNull(message = "You need to pick which class car is in")
+	@NotNull(message = "{validation.carClass.notEmpty}")
 	@ManyToOne
 	@JoinColumn(name = "carClassId")
 	private CarClass carclass;
 	
 	@JsonIgnore
-	@NotNull (message = "You need to pick which track")
+	@NotNull (message = "{validation.track.notEmpty}")
 	@ManyToOne
 	@JoinColumn(name = "trackId")
 	private Track track;

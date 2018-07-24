@@ -21,7 +21,7 @@ import fi.hh.PaOh.Harjoitustyo.model.UserRepository;
 @SpringBootApplication
 public class HarjoitustyoApplication {
 	
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(HarjoitustyoApplication.class, args);
 	}
@@ -50,7 +50,7 @@ public class HarjoitustyoApplication {
 			
 			
 			trepository.save(new Track("Suzuka Circuit", "Full Circuit", "Day"));
-			trepository.save(new Track("Nurburring", "Nodschleife", "Night"));
+			trepository.save(new Track("Nurburring", "Nordschleife", "Night"));
 			trepository.save(new Track("Virginia International Raceway", "Grand East", "Day"));
 			trepository.save(new Track("Maple Valley Raceway", "Full Circuit", "Rain"));
 			

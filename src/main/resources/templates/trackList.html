@@ -11,7 +11,7 @@
 	$(document).ready(function() {
 		$("#locales").change(function() {
 			var selectedLang = $('#locales').val();
-			if(selectedLang !== ''){
+			if(selectedLang != ''){
 				window.location.replace('?lang=' + selectedLang);
 			}
 		});
