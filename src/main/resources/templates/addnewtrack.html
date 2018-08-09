@@ -71,16 +71,15 @@ li a {
 				</tr>
 				<tr>
 					<td><label for="scenario" th:text="#{scenario}"></label></td>
-					<td><select id="scenario" th:field="*{scenario}"
-						class="form-control">
-							<option selected="selected" value="">Select</option>
+					<td><select id="scenario" th:field="*{scenario}">
+							<option selected="selected" value="" th:text="#{select}"></option>
 							<option selected="selected" value="Day">Day</option>
 							<option selected="selected" value="Night">Night</option>
 							<option selected="selected" value="Rain">Rain</option>
 					</select></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Save"></input></td>
+					<td><input type="submit" th:value="#{save}"></input></td>
 				</tr>
 			</table>
 			<ul id="errorStyle" th:if="${#fields.hasErrors('*')}">

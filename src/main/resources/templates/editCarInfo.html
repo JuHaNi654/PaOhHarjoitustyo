@@ -71,8 +71,7 @@ li a {
 				</tr>
 				<tr>
 					<td><label for="${Cclass}" th:text="#{carclass}"></label></td>
-					<td><select id="Cclass" th:field="*{carclass}"
-						class="form-control">
+					<td><select id="Cclass" th:field="*{carclass}">
 							<option th:each="carclass: ${carclass}"
 								th:value="${carclass.carClassId}" th:text="${carclass.carClass}">
 							</option>
@@ -92,7 +91,7 @@ li a {
 				</tr>
 				<tr>
 					<td><label for="veto" th:text="#{drive}"></label></td>
-					<td><select id="veto" th:field="*{veto}" class="form-control">
+					<td><select id="veto" th:field="*{veto}">
 							<option selected="selected" value="RWD">RWD</option>
 							<option selected="selected" value="FWD">FWD</option>
 							<option selected="selected" value="AWD">AWD</option>
@@ -132,7 +131,7 @@ li a {
 					</select></td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="bt btn-success" value="Save"></input></td>
+					<td><input type="submit" th:value="#{save}"></input></td>
 				</tr>
 			</table>
 		</div>

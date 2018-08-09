@@ -31,12 +31,11 @@ public class HarjoitustyoApplication {
 	public CommandLineRunner demolisting(CarRepository crepository, CarClassRepository ccrepository, TrackRepository trepository, UserRepository urepository) {
 		return(args) -> {
 			
-			
+			// Added test data to h2 database, to test program usage.
 			User user1 = new User("admin", "$2a$04$PSC69MYJAV0YzZUR1hcJ1eDpM22cOb/fWqn6.KHr1CMWxjxXCOss.", "testi@testi.testi", "ADMIN");
 			urepository.save(user1);
 			User user2 = new User("user", "$2a$04$b/AFYbPVQCyKmPIjA664ZejQ6qtD0S6ZUmHFmyqCznFtNcX3AffM2", "user@user.testi", "USER");
 			urepository.save(user2);
-			
 			
 			ccrepository.save(new CarClass("X"));
 			ccrepository.save(new CarClass("P"));

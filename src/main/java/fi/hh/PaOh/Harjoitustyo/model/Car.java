@@ -17,6 +17,20 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+
+/**
+ * @author jturp
+ * @id object id in database
+ * @GeneratedValue system set value as id on created object
+ * @Column Set database table column given name
+ * @Size Set Bean text size. If its over given max. value or lower given min. value, then system wont accept give value to database and 
+ * user message what causes error
+ * @Min Set min. value, that if user gives under that value, then program wont accept and give user error message
+ * @Max Set max. value, that if user gives over that value, then program wont accept and give user error message
+ * @NotNull Given value cannot be empty
+ * @JsonIgnore wont let program cause infite loop
+ * 
+ */
 @Entity
 public class Car {
 	

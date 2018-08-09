@@ -57,7 +57,7 @@ li a {
 			</div>
 		</li>
 	</ul>
-	<h1>Add information</h1>
+	<h1 th:text="#{addCarTitle}"></h1>
 	<div>
 		<form th:object="${car}"
 			th:action="@{/tracklist/{trackId}/carlist/save}" action="#"
@@ -72,7 +72,7 @@ li a {
 						<td><label for="carClass" th:text="#{carclass}"> </label></td>
 						<td><select id="Cclist" th:field="*{carclass}"
 							class="form-control">
-								<option selected="selected" value="">Select</option>
+								<option selected="selected" value="" th:text="#{select}"></option>
 								<option th:each="carclass: ${carclass}"
 									th:value="${carclass.carClassId}"
 									th:text="${carclass.carClass}"></option>
@@ -94,7 +94,7 @@ li a {
 					<tr>
 						<td><label for="veto" th:text="#{drive}"> </label></td>
 						<td><select id="veto" th:field="*{veto}" class="form-control">
-								<option selected="selected" value="">Select</option>
+								<option selected="selected" value="" th:text="#{select}"></option>
 								<option selected="selected" value="RWD">RWD</option>
 								<option selected="selected" value="FWD">FWD</option>
 								<option selected="selected" value="AWD">AWD</option>
@@ -132,14 +132,14 @@ li a {
 						<td><label for="track" th:text="#{trackS}"></label></td>
 						<td><select id="Tlist" th:field="*{track}"
 							class="form-control">
-								<option selected="selected" value="">Select</option>
+								<option selected="selected" value="" th:text="#{select}"></option>
 								<option th:each="track: ${tracks}" th:value="${track.trackId}"
 									th:text="${track.trackName} + '  -  ' + ${track.trackType} + '  -  ' + ${track.scenario}">
 								</option>
 						</select></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Save"></input></td>
+						<td><input type="submit" th:value="#{save}"></input></td>
 					</tr>
 				</table>
 				<ul id="errorStyle" th:if="${#fields.hasErrors('*')}">

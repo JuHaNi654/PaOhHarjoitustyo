@@ -32,7 +32,7 @@ public class InternationalizationConfig extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 	
-	//Methodi asettaa oletuskieleksi englantti, kun sivu aukaistaan, Ei Toimi
+	// LocalResoslver toimii sitä mukaan, millä kielellä thymeleaf templatee käytetään
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();
@@ -47,8 +47,10 @@ public class InternationalizationConfig extends WebMvcConfigurerAdapter {
 		return lci;
 	}
 
+	// Tämä methodi asettaa uuden kielen, kun saapuu pyyntö kielenvaihdosta
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
 	}
+	
 }

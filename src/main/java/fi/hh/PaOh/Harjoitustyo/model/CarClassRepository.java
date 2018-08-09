@@ -9,7 +9,9 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RestResource
 public interface CarClassRepository extends CrudRepository<CarClass, Long> {
 	
+	//Program can find cars from database by given carclass id
 	List<CarClass> findBycarClassId(Long carClassId);
+	//Program can find cars from database by given carclass char
 	CarClass findBycarClassIgnoreCase(@Param("carClass") String carClass);
 	
 }

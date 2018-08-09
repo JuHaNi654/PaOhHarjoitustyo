@@ -6,14 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title th:text="#{titleTracklist}"></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- javascript lisätään, jotta voidaan vaihtaa kieltä selectin avulla eikä osoitteen kautta -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#locales").change(function() {
 			var selectedLang = $('#locales').val();
-			if(selectedLang != ''){
-				window.location.replace('?lang=' + selectedLang);
-			}
+			window.location.replace('?lang=' + selectedLang);
 		});
 	});
 </script>
@@ -99,13 +96,13 @@ li a {
 			<td><a th:href="@{/tracklist/{id}/carlist(id=${track.trackId})}" th:text="#{carlist}"></a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
 				th:href="@{/tracklist/delete/{trackId}(trackId=${track.trackId})}"
-				class="btn btn-danger" th:text="#{delTrack}"
+				th:text="#{delTrack}"
 				th:attr="onclick='return confirm(\'' + 'Confirm to delete data' + '\');'"></a></td>
 		</tr>
 	</table>
 	<div id="selLag">
 		<select id="locales">
-			<option value="">Select language</option>
+			<option value="" th:text="#{sel.Lag}"></option>
 			<option value="eng" th:text="#{lang.eng}"></option>
 			<option value="fi" th:text="#{lang.fi}"></option>
 		</select>

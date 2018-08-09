@@ -20,8 +20,8 @@ h1 {
 </head>
 <body>
 	<h1 th:text="#{creatAc}"></h1>
-	<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post" >
-		<Table id="tableStyle">
+	<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post" id="tableStyle">
+		<Table>
 			<tr>
 				<td><label th:text="#{username}"></label></td>
 				<td><input type="text" th:field="*{username}" class="form-control"></input></td>
@@ -39,7 +39,7 @@ h1 {
 				<td><input type="userEmail" th:field="*{userEmail}" class="form-control"></input></td>
 			</tr>
 			<tr>
-				<td><input type="submit" class="btn btn-success" value="SignUp"></input></td>
+				<td><input type="submit" th:value="#{SignUp.Button}"></input></td>
 			</tr>
 		</Table>
 			<ul id="errorStyle" th:if="${#fields.hasErrors('*')}">

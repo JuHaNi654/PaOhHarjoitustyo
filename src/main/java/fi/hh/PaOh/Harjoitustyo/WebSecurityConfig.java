@@ -20,23 +20,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable() 
 			.authorizeRequests()
 				//Ei tarvitse olla sisäänkirjautunut, jotta voi päästä näille sivuille
+				// Let users to get site without login
 				.antMatchers("/resources/**", "/tracklist", "/tracklist/{trackId}/carlist", "/tracklist/{trackId}/carlist/car-info/{carId}", "/signup", "/saveuser").permitAll()
 				//Ei tarvitse olla sisäänkirjautunut, jotta voi käyttää Rest-methodeja
+				//To use Rest-service data, no need login
 				.antMatchers("/", "/cars", "/cars/{carId}", "/tracks", "/tracks/{trackId}", "/carclass", "/carclass/{carClass}").permitAll()
+				// Only admin action privileges in system
 				.antMatchers("/tracklist/delete/{trackId}").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
+				//After success login program redirect to tracklist page
 				.defaultSuccessUrl("/tracklist") //Ohjaa tracklist sivustolle onnistuneesta sisänkirjauksesta
 				.permitAll()
 				.and()
 			.logout()
+				////After success logout program redirect to tracklist page
 				.logoutSuccessUrl("/tracklist") //Ohjaa tracklist sivustolle onnistuneesta uloskirjauksesta
 				.permitAll();
 
 	}
 	
+	//Crypt given new account password
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
